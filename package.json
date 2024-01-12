@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start:dashboard": "nx serve dashboard"
+    "start:dashboard": "nx serve dashboard",
+    "serve:login": "nx serve login"
   },
   "private": true,
   "dependencies": {
@@ -55,7 +56,7 @@
     "jest-preset-angular": "~13.1.4",
     "jsonc-eslint-parser": "^2.1.0",
     "nx": "17.2.8",
-    "prettier": "^2.6.2",
+    "prettier": "^3.1",
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
     "typescript": "~5.2.2"
