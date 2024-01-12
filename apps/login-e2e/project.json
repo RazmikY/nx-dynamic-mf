@@ -1,0 +1,30 @@
+{
+  "name": "login-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/login-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/login-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "login:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "login:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "login:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["login"]
+}
