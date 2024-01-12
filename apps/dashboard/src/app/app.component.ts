@@ -22,7 +22,6 @@ export class AppComponent {
     isLoggedIn = this.userService.isUserLoggedIn;
 
     navigate = effect(() => {
-        console.log('is logged in ', this.isLoggedIn());
         if (!this.userService.isUserLoggedIn()) {
             this.router.navigateByUrl('login');
         } else {
