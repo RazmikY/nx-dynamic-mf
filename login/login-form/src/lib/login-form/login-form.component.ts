@@ -54,9 +54,13 @@ import { UserService } from '@nx-dynamic-mf/shared/data-access-user';
             flex-direction: column;
             margin: 0 auto;
             padding: 8px;
+            gap: 5px;
         }
         label {
             display: block;
+        }
+        button:hover {
+            cursor: pointer;
         }
     `,
 })
@@ -69,7 +73,7 @@ export class LoginFormComponent {
 
     constructor(
         private userService: UserService,
-        private fb: NonNullableFormBuilder
+        private fb: NonNullableFormBuilder,
     ) {}
 
     login() {
