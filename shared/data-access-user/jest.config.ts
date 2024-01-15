@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-    displayName: 'shared-data-access-user',
+    displayName: 'data-access-user',
     preset: '../../jest.preset.js',
     setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
     coverageDirectory: '../../coverage/shared/data-access-user',

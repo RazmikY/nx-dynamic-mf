@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SharedDataAccessUserComponent } from './shared-data-access-user.component';
+import { SharedDataAccessUserComponent } from './data-access-user.component';
 
 describe('SharedDataAccessUserComponent', () => {
     let component: SharedDataAccessUserComponent;

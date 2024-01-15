@@ -1,5 +1,5 @@
 {
-    "name": "shared-data-access-user",
+    "name": "data-access-user",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "sourceRoot": "shared/data-access-user/src",
     "prefix": "nx-dynamic-mf",

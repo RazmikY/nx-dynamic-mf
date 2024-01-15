@@ -3,7 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
     NonNullableFormBuilder,
     ReactiveFormsModule,
-    Validators,
+    Validators
 } from '@angular/forms';
 
 import { UserService } from '@nx-dynamic-mf/shared/data-access-user';
@@ -66,23 +66,23 @@ import { UserService } from '@nx-dynamic-mf/shared/data-access-user';
                 <div style="color: red;">Wrong userName or password!</div>
             }
         </div>
-    `,
+    `
 })
 export class RemoteEntryComponent {
     private submitted = false;
-    loginForm = this.fb.group({
+    public readonly loginForm = this.fb.group({
         username: ['', [Validators.required]],
-        password: ['', [Validators.required]],
+        password: ['', [Validators.required]]
     });
-    isLoggedIn = this.userService.isUserLoggedIn;
+    public readonly isLoggedIn = this.userService.isUserLoggedIn;
 
     constructor(
         private userService: UserService,
-        private fb: NonNullableFormBuilder,
+        private fb: NonNullableFormBuilder
     ) {
         this.loginForm.valueChanges
             .pipe(takeUntilDestroyed())
-            .subscribe((_) => {
+            .subscribe(() => {
                 if (this.submitted) {
                     this.resetSubmittedValue();
                 }
@@ -100,7 +100,7 @@ export class RemoteEntryComponent {
             this.submitted &&
             this.loginForm.valid &&
             Object.values(this.loginForm.controls).every(
-                (value) => value.touched,
+                (value) => value.touched
             )
         );
     }

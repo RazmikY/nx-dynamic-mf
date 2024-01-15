@@ -1,2 +1,2 @@
-export * from './lib/shared-data-access-user/shared-data-access-user.component';
+export * from './lib/data-access-user/data-access-user.component';
 export * from './lib/user.service';

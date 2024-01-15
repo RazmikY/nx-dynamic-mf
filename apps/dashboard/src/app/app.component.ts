@@ -21,11 +21,11 @@ import { UserService } from '@nx-dynamic-mf/shared/data-access-user';
 export class AppComponent {
     isLoggedIn = this.userService.isUserLoggedIn;
 
-    navigate = effect(() => {
+    navigate = effect(async () => {
         if (!this.userService.isUserLoggedIn()) {
-            this.router.navigateByUrl('login');
+            await this.router.navigateByUrl('login');
         } else {
-            this.router.navigateByUrl('');
+            await this.router.navigateByUrl('');
         }
     });
 
