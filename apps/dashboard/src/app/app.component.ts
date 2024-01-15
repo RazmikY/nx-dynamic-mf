@@ -1,9 +1,9 @@
 import { Component, effect } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
+import { UserService } from '@nx-dynamic-mf/shared/data-access-user';
 import { NxWelcomeComponent } from './nx-welcome.component';
 
-import { UserService } from '@nx-dynamic-mf/shared/data-access-user';
 
 @Component({
     standalone: true,
