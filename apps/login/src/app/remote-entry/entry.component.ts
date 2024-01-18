@@ -7,10 +7,11 @@ import {
 } from '@angular/forms';
 
 import { UserService } from '@nx-dynamic-mf/shared/data-access-user';
+import { ButtonComponent } from '@nx-dynamic-mf/button';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule],
+    imports: [ReactiveFormsModule, ButtonComponent],
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'nx-dynamic-mf-login-entry',
     styles: `
@@ -58,9 +59,7 @@ import { UserService } from '@nx-dynamic-mf/shared/data-access-user';
                         formControlName="password"
                     />
                 </label>
-                <button [disabled]="loginForm.invalid" type="submit">
-                    Login
-                </button>
+                <nx-dynamic-mf-button [disabled]="loginForm.invalid" label="Login" type="submit"/>
             </form>
             @if (isLoginFormTouched && !isLoggedIn()) {
                 <div style="color: red;">Wrong userName or password!</div>
