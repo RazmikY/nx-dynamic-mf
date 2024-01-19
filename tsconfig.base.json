@@ -15,11 +15,7 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@nx-dynamic-mf/button": ["shared/button/src/index.ts"],
-            "@nx-dynamic-mf/button/button": ["button/button/src/index.ts"],
-            "@nx-dynamic-mf/login/login-form": [
-                "login/login-form/src/index.ts"
-            ],
+            "@nx-dynamic-mf/shared/button": ["shared/ui/button/src/index.ts"],
             "@nx-dynamic-mf/shared/data-access-user": [
                 "shared/data-access-user/src/index.ts"
             ],

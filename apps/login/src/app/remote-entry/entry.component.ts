@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 
 import { UserService } from '@nx-dynamic-mf/shared/data-access-user';
-import { ButtonComponent } from '@nx-dynamic-mf/button';
+import { ButtonComponent } from '@nx-dynamic-mf/shared/button';
 
 @Component({
     standalone: true,
