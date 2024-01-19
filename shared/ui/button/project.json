@@ -1,7 +1,7 @@
 {
     "name": "button",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "shared/button/src",
+    "sourceRoot": "shared/ui/button/src",
     "prefix": "nx-dynamic-mf",
     "tags": [],
     "projectType": "library",
@@ -10,7 +10,7 @@
             "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
             "options": {
-                "jestConfig": "shared/button/jest.config.ts"
+                "jestConfig": "shared/ui/button/jest.config.ts"
             }
         },
         "lint": {
