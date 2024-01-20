@@ -4,7 +4,6 @@ import { Router, RouterModule } from '@angular/router';
 import { UserService } from '@nx-dynamic-mf/shared/data-access';
 import { NxWelcomeComponent } from './nx-welcome.component';
 
-
 @Component({
     standalone: true,
     imports: [NxWelcomeComponent, RouterModule],
@@ -16,18 +15,16 @@ import { NxWelcomeComponent } from './nx-welcome.component';
     `,
 })
 export class AppComponent {
-    isLoggedIn = this.userService.isUserLoggedIn;
-
-    navigate = effect(async () => {
-        if (!this.isLoggedIn()) {
-            await this.router.navigateByUrl('login');
-        } else {
-            await this.router.navigateByUrl('');
-        }
-    });
-
     constructor(
         private userService: UserService,
         private router: Router,
-    ) {}
+    ) {
+        effect(async () => {
+            if (!this.userService.isUserLoggedIn()) {
+                await this.router.navigateByUrl('login');
+            } else {
+                await this.router.navigateByUrl('');
+            }
+        });
+    }
 }
