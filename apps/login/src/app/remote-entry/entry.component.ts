@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 
 import { UserService } from '@nx-dynamic-mf/shared/data-access-user';
-import { ButtonComponent } from '@nx-dynamic-mf/shared/button';
+import { ButtonComponent } from '@nx-dynamic-mf/shared/ui/button';
 
 @Component({
     standalone: true,
@@ -31,9 +31,6 @@ import { ButtonComponent } from '@nx-dynamic-mf/shared/button';
         }
         label {
             display: block;
-        }
-        button:hover {
-            cursor: pointer;
         }
     `,
     template: `

@@ -1,11 +1,22 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    Output,
+} from '@angular/core';
 
 @Component({
     selector: 'nx-dynamic-mf-button',
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: `
+        button:hover {
+            cursor: pointer;
+        }
+    `,
     template: `
-        <button [disabled]="disabled" [type]='type' (click)="onClick()">
+        <button [disabled]="disabled" [type]="type" (click)="onClick()">
             {{ label }}
         </button>
     `,
