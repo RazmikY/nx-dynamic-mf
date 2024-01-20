@@ -1,12 +1,12 @@
 import { Component, effect } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 import { UserService } from '@nx-dynamic-mf/shared/data-access';
 import { NxWelcomeComponent } from './nx-welcome.component';
 
 @Component({
     standalone: true,
-    imports: [NxWelcomeComponent, RouterModule],
+    imports: [NxWelcomeComponent, RouterOutlet],
     selector: 'nx-dynamic-mf-root',
     template: `
         <div class="dashboard-nav">Admin Dashboard</div>
