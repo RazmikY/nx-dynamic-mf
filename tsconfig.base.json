@@ -16,8 +16,8 @@
         "baseUrl": ".",
         "paths": {
             "@nx-dynamic-mf/shared/ui/button": ["shared/ui/button/src/index.ts"],
-            "@nx-dynamic-mf/shared/data-access-user": [
-                "shared/data-access-user/src/index.ts"
+            "@nx-dynamic-mf/shared/data-access": [
+                "shared/data-access/src/index.ts"
             ],
             "login/Routes": ["apps/login/src/app/remote-entry/entry.routes.ts"]
         }

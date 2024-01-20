@@ -6,7 +6,7 @@ import {
     Validators
 } from '@angular/forms';
 
-import { UserService } from '@nx-dynamic-mf/shared/data-access-user';
+import { UserService } from '@nx-dynamic-mf/shared/data-access';
 import { ButtonComponent } from '@nx-dynamic-mf/shared/ui/button';
 
 @Component({

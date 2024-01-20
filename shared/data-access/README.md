@@ -1,4 +1,4 @@
-# shared-data-access-user
+# shared-data-access
 
 This library was generated with [Nx](https://nx.dev).
 
