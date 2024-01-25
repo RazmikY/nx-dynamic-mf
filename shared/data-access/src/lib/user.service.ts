@@ -7,13 +7,13 @@ export class UserService {
     #isUserLoggedIn = signal(false);
     readonly isUserLoggedIn = this.#isUserLoggedIn.asReadonly();
 
-    public checkCredentials(username: string, password: string) {
+    public checkCredentials(username: string, password: string): void {
         if (username === 'demo' && password === 'demo') {
             this.#isUserLoggedIn.set(true);
         }
     }
 
-    public logout() {
+    public logout(): void {
         this.#isUserLoggedIn.set(false);
     }
 }
