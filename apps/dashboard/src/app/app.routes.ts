@@ -6,7 +6,7 @@ import { authGuard } from '@nx-dynamic-mf/shared/data-access';
 export const appRoutes: Route[] = [
     {
         path: 'login',
-        loadChildren: () => import('login/Routes').then((m) => m.remoteRoutes),
+        loadChildren: () => import('login/Routes').then((m) => m.loginRoutes),
     },
     {
         path: '',
