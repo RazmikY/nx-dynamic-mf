@@ -3,12 +3,12 @@ import { signal } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import spyOn = jest.spyOn;
 
-import { RemoteEntryComponent } from './entry.component';
+import { LoginComponent } from './login.component';
 import { UserService } from '@nx-dynamic-mf/shared/data-access';
 
-describe('RemoteEntryComponent', () => {
-    let component: RemoteEntryComponent;
-    let fixture: ComponentFixture<RemoteEntryComponent>;
+describe('LoginComponent', () => {
+    let component: LoginComponent;
+    let fixture: ComponentFixture<LoginComponent>;
     let userService: UserService;
 
     beforeEach(async () => {
@@ -18,11 +18,11 @@ describe('RemoteEntryComponent', () => {
         } as unknown as UserService;
 
         await TestBed.configureTestingModule({
-            imports: [RemoteEntryComponent],
+            imports: [LoginComponent],
             providers: [{ provide: UserService, useValue: userService }],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(RemoteEntryComponent);
+        fixture = TestBed.createComponent(LoginComponent);
         component = fixture.componentInstance;
     });
 

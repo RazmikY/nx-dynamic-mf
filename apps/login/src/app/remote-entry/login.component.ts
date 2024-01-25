@@ -71,7 +71,7 @@ import { ErrorComponent } from '@nx-dynamic-mf/shared/ui/error';
         </div>
     `,
 })
-export class RemoteEntryComponent {
+export class LoginComponent {
     private submitted = false;
     public readonly loginForm = this.fb.group({
         userName: ['', [Validators.required]],

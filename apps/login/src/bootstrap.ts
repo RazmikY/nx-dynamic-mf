@@ -1,7 +1,7 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
-import { RemoteEntryComponent } from './app/remote-entry/entry.component';
+import { LoginComponent } from './app/remote-entry/login.component';
 
-bootstrapApplication(RemoteEntryComponent, appConfig).catch((err) =>
+bootstrapApplication(LoginComponent, appConfig).catch((err) =>
   console.error(err)
 );
