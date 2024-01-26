@@ -4,7 +4,7 @@ import {
     Input,
     OnInit,
     Optional,
-    Self,
+    Self
 } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 
@@ -21,7 +21,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
             (input)="onChanged($any($event.target).value)"
             (blur)="onTouched()"
         />
-    `,
+    `
 })
 export class InputComponent implements OnInit, ControlValueAccessor {
     @Input({ required: true }) name!: string;
@@ -33,18 +33,26 @@ export class InputComponent implements OnInit, ControlValueAccessor {
     public onTouched!: () => void;
 
     constructor(@Optional() @Self() public dir: NgControl) {
-        dir.valueAccessor = this;
+        if (dir) {
+            this.dir.valueAccessor = this;
+        }
     }
 
     ngOnInit(): void {
+        this.configControl();
+    }
+
+    private configControl(): void {
         const control = this.dir.control!;
-        const validators = control.validator ? [control.validator] : [];
-        const asyncValidator = control.asyncValidator
-            ? [control.asyncValidator]
-            : [];
-        control.setValidators(validators);
-        control.setAsyncValidators(asyncValidator);
-        control.updateValueAndValidity();
+        if (control) {
+            const validators = control.validator ? [control.validator] : [];
+            const asyncValidator = control?.asyncValidator
+                ? [control.asyncValidator]
+                : [];
+            control.setValidators(validators);
+            control.setAsyncValidators(asyncValidator);
+            control.updateValueAndValidity();
+        }
     }
 
     public onChanged(value: string): void {
