@@ -34,7 +34,6 @@ describe('InputComponent', () => {
     });
 
     it('should set name and type inputs', () => {
-        // const mockOnChanged
         component.name = 'testName';
         component.type = 'text';
         fixture.detectChanges();

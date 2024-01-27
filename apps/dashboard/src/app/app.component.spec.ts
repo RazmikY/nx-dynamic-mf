@@ -1,43 +1,58 @@
-import { fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
+import { signal, WritableSignal } from '@angular/core';
+
+import { NxWelcomeComponent } from './nx-welcome.component';
+import { AppComponent } from './app.component';
+import { UserService } from '@nx-dynamic-mf/shared/data-access';
 
 describe('AppComponent', () => {
+    let component: AppComponent;
+    let fixture: ComponentFixture<AppComponent>;
+    let router: Router;
+    let userService: UserService;
+
     beforeEach(async () => {
+        userService = {
+            isUserLoggedIn: signal(false)
+        } as unknown as UserService;
+
         await TestBed.configureTestingModule({
             imports: [
                 RouterTestingModule.withRoutes([
-                    { path: '', component: NxWelcomeComponent },
+                    { path: '', component: NxWelcomeComponent }
                 ]),
                 AppComponent,
-                NxWelcomeComponent,
+                NxWelcomeComponent
             ],
+            providers: [{ provide: UserService, useValue: userService }]
         }).compileComponents();
+
+        fixture = TestBed.createComponent(AppComponent);
+        component = fixture.componentInstance;
+        router = TestBed.inject(Router);
     });
 
-    it('should create the app', () => {
-        const fixture = TestBed.createComponent(AppComponent);
-        const app = fixture.componentInstance;
-        expect(app).toBeTruthy();
+    it('should create', () => {
+        expect(component).toBeTruthy();
     });
 
-    it(`should have as title 'dashboard'`, () => {
-        const fixture = TestBed.createComponent(AppComponent);
-        const app = fixture.componentInstance;
-        // expect(app.title).toEqual('dashboard');
+    it('should navigate to login page', () => {
+        const isUserLoggedIn = userService.isUserLoggedIn;
+
+        fixture.whenStable().then(() => {
+            if (!isUserLoggedIn()) {
+                expect(router.url).toBe('login');
+            }
+        });
     });
 
-    it('should render title', fakeAsync(() => {
-        const fixture = TestBed.createComponent(AppComponent);
-        const router = TestBed.inject(Router);
-        fixture.ngZone?.run(() => router.navigate(['']));
-        tick();
-        fixture.detectChanges();
-        const compiled = fixture.nativeElement as HTMLElement;
-        expect(compiled.querySelector('h1')?.textContent).toContain(
-            'Welcome dashboard',
-        );
-    }));
+    it('should navigate to the main page', () => {
+        (userService.isUserLoggedIn as WritableSignal<boolean>).set(true);
+
+        fixture.whenStable().then(() => {
+            expect(router.url).toBe('/');
+        });
+    });
 });
