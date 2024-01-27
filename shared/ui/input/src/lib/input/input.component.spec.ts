@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { NgControl } from '@angular/forms';
 
 import { InputComponent } from './input.component';
-import { NgControl } from '@angular/forms';
 
 describe('InputComponent', () => {
     let component: InputComponent;
@@ -16,7 +16,7 @@ describe('InputComponent', () => {
 
         fixture = TestBed.createComponent(InputComponent);
         component = fixture.componentInstance;
-        component.dir = fixture.debugElement.injector.get(NgControl);
+        component.dir = TestBed.inject(NgControl);
     });
 
     it('should create', () => {
@@ -105,7 +105,7 @@ describe('InputComponent', () => {
             updateValueAndValidity: jest.fn()
         };
 
-        component.dir = { control: mockControl } as any;
+        component.dir = { control: mockControl } as unknown as NgControl;
         component.ngOnInit();
 
         expect(mockControl.setValidators).toHaveBeenCalled();
