@@ -16,60 +16,8 @@ import { ErrorComponent } from '@nx-dynamic-mf/shared/ui/error';
     imports: [ReactiveFormsModule, ButtonComponent, InputComponent, ErrorComponent],
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'nx-dynamic-mf-login-entry',
-    styles: `
-        .login-app {
-            width: 30vw;
-            border: 2px dashed black;
-            padding: 8px;
-            margin: 0 auto;
-        }
-        .login-form {
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            margin: 0 auto;
-            padding: 8px;
-            gap: 5px;
-        }
-        label {
-            display: block;
-        }
-
-    `,
-    template: `
-        <div class="login-app">
-            <form
-                class="login-form"
-                [formGroup]="loginForm"
-                (ngSubmit)="login()"
-            >
-                <label>
-                    Username:
-                    <nx-dynamic-mf-input
-                        formControlName="userName"
-                        type="text"
-                        name="userName"
-                    />
-                </label>
-                <label>
-                    Password:
-                    <nx-dynamic-mf-input
-                        formControlName="password"
-                        type="password"
-                        name="password"
-                    />
-                </label>
-                <nx-dynamic-mf-button
-                    [disabled]="loginForm.invalid"
-                    label="Login"
-                    type="submit"
-                />
-            </form>
-            @if (isLoginFormTouched && !isLoggedIn()) {
-                <nx-dynamic-mf-error errorMessage="Wrong userName or password!"/>
-            }
-        </div>
-    `,
+    styleUrl: './login.component.scss',
+    templateUrl: './login.component.html',
 })
 export class LoginComponent {
     private submitted = false;
@@ -80,8 +28,8 @@ export class LoginComponent {
     public readonly isLoggedIn = this.userService.isUserLoggedIn;
 
     constructor(
-        private userService: UserService,
-        private fb: NonNullableFormBuilder,
+        private readonly userService: UserService,
+        private readonly fb: NonNullableFormBuilder,
     ) {
         this.loginForm.valueChanges.pipe(takeUntilDestroyed()).subscribe(() => {
             if (this.submitted) {
@@ -96,7 +44,7 @@ export class LoginComponent {
         this.userService.checkCredentials(userName!, password!);
     }
 
-    public get isLoginFormTouched(): boolean {
+    public get loginFormIsTouched(): boolean {
         return (
             this.submitted &&
             this.loginForm.valid &&

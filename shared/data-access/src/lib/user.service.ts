@@ -5,7 +5,7 @@ import { Injectable, signal } from '@angular/core';
 })
 export class UserService {
     #isUserLoggedIn = signal(false);
-    readonly isUserLoggedIn = this.#isUserLoggedIn.asReadonly();
+    public readonly isUserLoggedIn = this.#isUserLoggedIn.asReadonly();
 
     public checkCredentials(username: string, password: string): void {
         if (username === 'demo' && password === 'demo') {

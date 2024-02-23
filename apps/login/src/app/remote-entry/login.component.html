@@ -1,0 +1,32 @@
+<div class="login-app">
+    <form
+        class="login-form"
+        [formGroup]="loginForm"
+        (ngSubmit)="login()"
+    >
+        <label>
+            Username:
+            <nx-dynamic-mf-input
+                formControlName="userName"
+                type="text"
+                name="userName"
+            />
+        </label>
+        <label>
+            Password:
+            <nx-dynamic-mf-input
+                formControlName="password"
+                type="password"
+                name="password"
+            />
+        </label>
+        <nx-dynamic-mf-button
+            [disabled]="loginForm.invalid"
+            label="Login"
+            type="submit"
+        />
+    </form>
+    @if (loginFormIsTouched && !isLoggedIn()) {
+        <nx-dynamic-mf-error errorMessage="Wrong userName or password!" />
+    }
+</div>

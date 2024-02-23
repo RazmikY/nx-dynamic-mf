@@ -27,6 +27,9 @@ describe('InputComponent', () => {
         component.type = 'text';
         fixture.detectChanges();
 
+        // when you want access html element by debugElement you
+        // should do it after fixture.whenStable(), in case of nativeElement
+        // you can do it after calling fixture.detectChanges()
         fixture.whenStable().then(() => {
             const input = fixture.debugElement.query(By.css('input')).nativeNode;
             expect(input.dataset.type).toBe('text');

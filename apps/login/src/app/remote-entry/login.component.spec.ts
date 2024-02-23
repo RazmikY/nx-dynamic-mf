@@ -88,7 +88,7 @@ describe('LoginComponent', () => {
     });
 
     it('should test isLoginFormTouched getter', () => {
-        expect(component.isLoginFormTouched).toBe(false);
+        expect(component.loginFormIsTouched).toBe(false);
 
         fixture.detectChanges();
 
@@ -108,13 +108,13 @@ describe('LoginComponent', () => {
 
         // will be false, because all controls must be touched
         // in this scenario only password control is touched
-        expect(component.isLoginFormTouched).toBe(false);
+        expect(component.loginFormIsTouched).toBe(false);
 
         // now userName control is also touched
         userNameInput.dispatchEvent(new Event('input'));
         userNameInput.dispatchEvent(new Event('blur'));
         component.login();
-        expect(component.isLoginFormTouched).toBe(true);
+        expect(component.loginFormIsTouched).toBe(true);
     });
 
     it('should test submit button', () => {
